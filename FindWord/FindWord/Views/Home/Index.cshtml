@@ -1,0 +1,50 @@
+﻿@model FindWord.Models.Keyword
+
+@using Microsoft.Web.Helpers;
+@using FindWord.DAL;
+@{
+    var fileName = "";
+    if (IsPost)
+    {
+        var fileSavePath = "";
+        var uploadedFile = Request.Files[0];
+        fileName = "some.txt";
+        fileSavePath = Server.MapPath("~/App_Data/UploadedFiles/" + fileName);
+        uploadedFile.SaveAs(fileSavePath);
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find Word</title>
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    @FileUpload.GetHtml(
+                                                             initialNumberOfFiles: 1,
+                                                             allowMoreFilesToBeAdded: false,
+                                                             includeFormTag: true,
+                                                             uploadText: "Load")
+    @if (IsPost)
+    {
+        <span>File uploaded!</span>
+    }
+
+    @using (Html.BeginForm("Find", "Home", FormMethod.Post))
+    {
+        @Html.TextBoxFor(model => model.keyword, new { @placeholder = "Input word" })
+        @Html.ValidationMessageFor(model => model.keyword)
+        <button id="Submit" type="submit">Find</button>
+        }
+        <table>
+            @foreach (var std in ViewData["sentences"] as IList<Sentence>)
+            {
+            <tr>
+            <td>Sentence:@std.sentence</td><td>Number of matches:@std.number</td>
+            </tr>
+        }
+        </table>
+</body>
+</html>

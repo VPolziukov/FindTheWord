@@ -1,0 +1,34 @@
+﻿body {
+    background-color: moccasin;
+}
+body input{       
+    margin-left: 40%;
+}
+#Submit {
+    height: 40px;
+    width: 10%;
+    background-color: beige;
+    font-family: 'Arial Unicode MS';
+    font-size: 18px;
+    margin-left: 45%;
+    margin-top: 1%;
+}
+#keyword {
+    height: 20px;
+    width: 20%;
+    background-color: aliceblue;
+    font-family: 'Arial Unicode MS';
+    font-size: 14px;
+    margin-left: 40%;
+    margin-bottom: 1%;
+}
+.file-upload-buttons input {
+    height: 40px;
+    width: 10%;
+    background-color: beige;
+    font-family: 'Arial Unicode MS';
+    font-size: 18px;
+    margin-left: 45%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
